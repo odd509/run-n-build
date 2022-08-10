@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectable
   - Collected
+  - BrickHolder
   layers:
   - Default
   - TransparentFX

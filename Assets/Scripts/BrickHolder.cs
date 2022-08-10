@@ -25,6 +25,7 @@ public class BrickHolder : MonoBehaviour
             
             brick.AddComponent<CharacterJoint>();
             brick.GetComponent<CharacterJoint>().connectedBody = this.GetComponent<Rigidbody>();
+            brick.GetComponent<BrickBehaviour>().tailBrick = this.gameObject;
         }
         else
         {
@@ -44,12 +45,17 @@ public class BrickHolder : MonoBehaviour
             tempBrick.GetComponent<BrickBehaviour>().jointBrick = brick;
             brick.AddComponent<CharacterJoint>();
             brick.GetComponent<CharacterJoint>().connectedBody = tempBrick.GetComponent<Rigidbody>();
+            brick.GetComponent<BrickBehaviour>().tailBrick = tempBrick;
 
         }
+
+        brick.GetComponent<CharacterJoint>().breakForce = 700f;
     }
 
     private void OnJointBreak(float breakForce)
     {
+        Debug.Log("ananı");
         jointBrick = null;
+        
     }
 }
