@@ -50,6 +50,7 @@ public class BrickHolder : MonoBehaviour
         }
 
         brick.GetComponent<CharacterJoint>().breakForce = 700f;
+        brick.GetComponent<CharacterJoint>().massScale = 5f;
     }
 
     private void OnJointBreak(float breakForce)
