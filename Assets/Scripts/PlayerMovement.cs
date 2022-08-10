@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float runSpeed = 3f;
     public float sideSpeed = 2f;
-
+    public float runBorder = 1.5f;
+    
+    
     private Rigidbody rb;
     private void Awake()
     {
@@ -17,13 +20,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        transform.Translate(0, 0,runSpeed * Time.deltaTime);
+        
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint (new Vector3 (touch.position.x, touch.position.y, 10));
 
-            touchPosition.z = 0;
+            touchPosition.z = transform.position.z;
             touchPosition.y = transform.position.y;
 
             if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
@@ -41,14 +47,24 @@ public class PlayerMovement : MonoBehaviour
         
         
         
-        if (transform.position.x > 1.5)
+        if (transform.position.x > runBorder)
         {
-            transform.position = new Vector3(1.5f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(runBorder, transform.position.y, transform.position.z);
         }
-        else if (transform.position.x < -1.5)
+        else if (transform.position.x < -runBorder)
         {
-            transform.position = new Vector3(-1.5f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-runBorder, transform.position.y, transform.position.z);
         }
         
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3 position = transform.position;
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(position, position + new Vector3(runBorder, 0, 0));
+        Gizmos.DrawLine(position, position + new Vector3(-runBorder, 0, 0));
+
     }
 }
