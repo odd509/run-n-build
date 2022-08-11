@@ -6,7 +6,7 @@ using UnityEngine;
 public class Price : MonoBehaviour
 {
 
-    public float price;
+    public int price;
     public TextMeshProUGUI priceText;
     
     // Start is called before the first frame update

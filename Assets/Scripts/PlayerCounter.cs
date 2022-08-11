@@ -52,9 +52,8 @@ public class PlayerCounter : MonoBehaviour
 
 
 
-        Debug.Log(corObject);
-        counter[corObject] += 1;
-        TMPHolder[corObject].text = counter[corObject].ToString();
+        counter[corObject] = key.gameObject.GetComponent<Price>().price;
+        TMPHolder[corObject].text = counter[corObject].ToString() + "$";
 
 
     }
@@ -66,9 +65,14 @@ public class PlayerCounter : MonoBehaviour
         {
             //brickHolder.GetComponent<BrickHolder>().addJoint(collision.gameObject);
             Debug.Log("zort");
+
+            GameObject collisionParent = collision.gameObject.transform.parent.gameObject;
+
+           
+            
             Counter(collision.gameObject);
             
-            Destroy(collision.gameObject);
+            Destroy(collisionParent.gameObject);
             
             
             //collision.gameObject.tag = "Collected";
