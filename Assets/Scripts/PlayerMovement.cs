@@ -10,14 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public float sideSpeed = 2f;
     public float runBorder = 1.5f;
     
-    public GameObject brickHolder;
+    //public GameObject brickHolder;
     
     private Rigidbody rb;
-    
+    private PlayerCounter _playerCounter;
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        _playerCounter = GetComponent<PlayerCounter>();
     }
 
     // Update is called once per frame
@@ -62,19 +63,6 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Collectable"))
-        {
-            brickHolder.GetComponent<BrickHolder>().addJoint(collision.gameObject);
-            collision.gameObject.tag = "Collected";
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
     
     
 
