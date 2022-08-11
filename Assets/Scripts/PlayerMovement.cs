@@ -40,11 +40,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, touchPosition, Time.deltaTime * sideSpeed);
             }
-            
-            
-            
-            Debug.Log(touchPosition);
-            Debug.Log(touch.position);
 
 
         }
