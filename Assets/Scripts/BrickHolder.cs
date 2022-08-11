@@ -59,4 +59,10 @@ public class BrickHolder : MonoBehaviour
         jointBrick = null;
         
     }
+
+    public void CalculteScore()
+    {
+        
+    }
+    
 }
