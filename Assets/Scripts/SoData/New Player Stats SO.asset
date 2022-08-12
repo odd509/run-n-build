@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdcb6807a293a7b4b901f3992945aebd, type: 3}
-  m_Name: StartMoneySO
+  m_Name: New Player Stats SO
   m_EditorClassIdentifier: 
-  _value: 10
+  startingMoneyLevel: 22
+  totalMoney: 893382

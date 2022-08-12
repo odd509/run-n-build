@@ -14,7 +14,7 @@ public class PlayerCounter : MonoBehaviour
     [Header("Stats")] 
     //public float startMoney;
     private float currentMoney;
-    public FloatSO startMoneySO;
+    public PlayerStatsSO playerStatsSO;
     
     [Header("UI Texts")]
     public TextMeshProUGUI brickTMP;
@@ -39,8 +39,8 @@ public class PlayerCounter : MonoBehaviour
         TMPHolder[brick] = brickTMP;
         TMPHolder[door] = doorTMP;
 
-        currentMoney = startMoneySO.Value;
-        playerMoneyTMP.text = startMoneySO.Value + "$";
+        currentMoney = playerStatsSO.GetStartingMoney();
+        playerMoneyTMP.text = currentMoney + "$";
 
 
     }

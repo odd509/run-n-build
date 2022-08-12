@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c9ae8e70f77814db7e739d18872175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoneySO: {fileID: 11400000, guid: a3aad2747a51a5746899bc3291df7bf0, type: 2}
+  playerStatsSO: {fileID: 11400000, guid: aac95290b88b92749a16a264b0cd3bb8, type: 2}
   brickTMP: {fileID: 0}
   doorTMP: {fileID: 0}
   playerMoneyTMP: {fileID: 3792200864147036745}
