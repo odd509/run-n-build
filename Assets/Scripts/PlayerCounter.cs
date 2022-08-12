@@ -11,8 +11,10 @@ public class PlayerCounter : MonoBehaviour
     public Dictionary<GameObject, int> counter = new Dictionary<GameObject, int>();
     public Dictionary<GameObject, TextMeshProUGUI> TMPHolder = new Dictionary<GameObject, TextMeshProUGUI>();
 
-    [Header("Stats")] public float startMoney;
+    [Header("Stats")] 
+    //public float startMoney;
     private float currentMoney;
+    public FloatSO startMoneySO;
     
     [Header("UI Texts")]
     public TextMeshProUGUI brickTMP;
@@ -37,8 +39,8 @@ public class PlayerCounter : MonoBehaviour
         TMPHolder[brick] = brickTMP;
         TMPHolder[door] = doorTMP;
 
-        currentMoney = startMoney;
-        playerMoneyTMP.text = startMoney + "$";
+        currentMoney = startMoneySO.Value;
+        playerMoneyTMP.text = startMoneySO.Value + "$";
 
 
     }

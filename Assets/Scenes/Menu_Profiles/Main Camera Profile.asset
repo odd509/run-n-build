@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9016167536429473018
+--- !u!114 &-5561444301287943925
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18,16 +18,16 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 0.1
+    value: 7.59
   aperture:
     overrideState: 1
-    value: 24.4
+    value: 31.45
   focalLength:
     overrideState: 1
-    value: 97
+    value: 52.67
   kernelSize:
-    overrideState: 1
-    value: 0
+    overrideState: 0
+    value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: Post-process Volume Profile
+  m_Name: Main Camera Profile
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: -9016167536429473018}
+  - {fileID: -5561444301287943925}
