@@ -11,11 +11,15 @@ public class PlayerCounter : MonoBehaviour
     public Dictionary<GameObject, int> counter = new Dictionary<GameObject, int>();
     public Dictionary<GameObject, TextMeshProUGUI> TMPHolder = new Dictionary<GameObject, TextMeshProUGUI>();
 
-    
+    [Header("Stats")] public float startMoney;
+    private float currentMoney;
     
     [Header("UI Texts")]
     public TextMeshProUGUI brickTMP;
     public TextMeshProUGUI doorTMP;
+    public TextMeshProUGUI playerMoneyTMP;
+    
+    
     [Header("Prefabs")]
     public GameObject brick;
     public GameObject door;
@@ -23,7 +27,7 @@ public class PlayerCounter : MonoBehaviour
     public GameObject brickParent;
     public GameObject doorParent;
     
-
+    
 
     private void Start()
     {
@@ -32,6 +36,9 @@ public class PlayerCounter : MonoBehaviour
 
         TMPHolder[brick] = brickTMP;
         TMPHolder[door] = doorTMP;
+
+        currentMoney = startMoney;
+        playerMoneyTMP.text = startMoney + "$";
 
 
     }
@@ -66,6 +73,9 @@ public class PlayerCounter : MonoBehaviour
 
         counter[corObject] = key.gameObject.GetComponent<Price>().price;
         TMPHolder[corObject].text = counter[corObject].ToString() + "$";
+
+        currentMoney -= counter[corObject];
+        playerMoneyTMP.text = currentMoney + "$";
         corParent.GetComponent<UIEffects>().PickUp();
 
 
@@ -77,15 +87,17 @@ public class PlayerCounter : MonoBehaviour
         if (collision.gameObject.CompareTag("Collectable"))
         {
             //brickHolder.GetComponent<BrickHolder>().addJoint(collision.gameObject);
-            Debug.Log("zort");
 
             GameObject collisionParent = collision.gameObject.transform.parent.gameObject;
 
-           
+            if (currentMoney >= collision.gameObject.GetComponent<Price>().price)
+            {
+                Counter(collision.gameObject);
             
-            Counter(collision.gameObject);
+                Destroy(collisionParent.gameObject);
+            }
             
-            Destroy(collisionParent.gameObject);
+            
             
             
             //collision.gameObject.tag = "Collected";
