@@ -11,17 +11,37 @@ public class MaterialSpawner : MonoBehaviour
     public float spawnDistance;
     public float spawnOffset;
 
+    public int spawnCount;
+    public float spawnTimer;
+    private Vector3 currentPos;
+    
     private void Awake()
     {
-        Vector3 currentPos = transform.position;
+        currentPos = transform.position;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < spawnCount; i++)
         {
             currentPos += Vector3.forward * spawnDistance;
             GameObject newMaterial = Instantiate(materials[Random.Range(0, materials.Length)], currentPos, Quaternion.identity);
         }
 
     }
+
+    private void Start()
+    {
+        StartCoroutine(spawn());
+    }
+
+    IEnumerator spawn()
+    {
+        yield return new WaitForSeconds(spawnTimer);
+        currentPos += Vector3.forward * spawnDistance;
+        GameObject newMaterial = Instantiate(materials[Random.Range(0, materials.Length)], currentPos, Quaternion.identity);
+
+        StartCoroutine(spawn());
+
+    }
+    
 
 
     private void OnDrawGizmos()
