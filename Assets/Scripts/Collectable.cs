@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Price : MonoBehaviour
+public class Collectable : MonoBehaviour
 {
 
-    public int price;
+    public float price;
     public TextMeshProUGUI priceText;
+
+    public CollectableType type;
+    public enum CollectableType
+    {
+        Door,
+        Wall,
+        Sealing,
+        Window
+    }
     
-    // Start is called before the first frame update
     void Start()
     {
+        
         priceText.text = price.ToString() + "$";
     }
 

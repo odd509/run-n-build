@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36dd5025fcad9f249a18ea234e31eeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerStatsSo: {fileID: 11400000, guid: aac95290b88b92749a16a264b0cd3bb8, type: 2}
 --- !u!4 &190122373
 Transform:
   m_ObjectHideFlags: 0
@@ -1647,7 +1648,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1807141615}
   - component: {fileID: 1807141617}
-  - component: {fileID: 1807141616}
   m_Layer: 0
   m_Name: Canvas Camera
   m_TagString: Untagged
@@ -1669,14 +1669,6 @@ Transform:
   m_Father: {fileID: 530071161}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1807141616
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807141614}
-  m_Enabled: 1
 --- !u!20 &1807141617
 Camera:
   m_ObjectHideFlags: 0

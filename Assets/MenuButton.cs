@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
+    public PlayerStatsSO PlayerStatsSo;
+    
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
+        PlayerStatsSo.totalMoney += 1000;
     }
 }

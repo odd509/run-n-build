@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerCounter : MonoBehaviour
 {
-    public Dictionary<GameObject, int> counter = new Dictionary<GameObject, int>();
+    public Dictionary<GameObject, float> counter = new Dictionary<GameObject, float>();
     public Dictionary<GameObject, TextMeshProUGUI> TMPHolder = new Dictionary<GameObject, TextMeshProUGUI>();
 
     [Header("Stats")] 
@@ -73,7 +73,7 @@ public class PlayerCounter : MonoBehaviour
 
 
 
-        counter[corObject] = key.gameObject.GetComponent<Price>().price;
+        counter[corObject] = key.gameObject.GetComponent<Collectable>().price;
         TMPHolder[corObject].text = counter[corObject].ToString() + "$";
 
         currentMoney -= counter[corObject];
@@ -92,7 +92,7 @@ public class PlayerCounter : MonoBehaviour
 
             GameObject collisionParent = collision.gameObject.transform.parent.gameObject;
 
-            if (currentMoney >= collision.gameObject.GetComponent<Price>().price)
+            if (currentMoney >= collision.gameObject.GetComponent<Collectable>().price)
             {
                 Counter(collision.gameObject);
             

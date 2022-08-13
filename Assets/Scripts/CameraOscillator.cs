@@ -24,7 +24,6 @@ public class CameraOscillator : MonoBehaviour
         transform.Rotate(0, speed * Time.deltaTime * _flipper, 0);
         if (flipCountdown <= 0.0f)
         {
-            Debug.Log(transform.rotation.eulerAngles.y);
             _flipper = -_flipper;
             flipCountdown = flipTimer;
         }
