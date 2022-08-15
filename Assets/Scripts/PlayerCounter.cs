@@ -8,8 +8,13 @@ using UnityEngine.UI;
 
 public class PlayerCounter : MonoBehaviour
 {
-    public Dictionary<GameObject, float> counter = new Dictionary<GameObject, float>();
-    public Dictionary<GameObject, TextMeshProUGUI> TMPHolder = new Dictionary<GameObject, TextMeshProUGUI>();
+    
+    public Dictionary<Collectable.CollectableType, TextMeshProUGUI> TMPHolder = new Dictionary<Collectable.CollectableType, TextMeshProUGUI>();
+    public Dictionary<Collectable.CollectableType, GameObject> placeHolder = new Dictionary<Collectable.CollectableType, GameObject>();
+
+    public Dictionary<Collectable.CollectableType, GameObject> playerInventory =
+        new Dictionary<Collectable.CollectableType, GameObject>();
+
 
     [Header("Stats")] 
     //public float startMoney;
@@ -17,9 +22,18 @@ public class PlayerCounter : MonoBehaviour
     public PlayerStatsSO playerStatsSO;
     
     [Header("UI Texts")]
-    public TextMeshProUGUI brickTMP;
+    public TextMeshProUGUI roofTMP;
+    public TextMeshProUGUI wallTMP;
+    public TextMeshProUGUI windowTMP;
     public TextMeshProUGUI doorTMP;
     public TextMeshProUGUI playerMoneyTMP;
+    
+    [Header("UI Model Placeholders")]
+    public GameObject roofPlaceholder;
+    public GameObject wallPlaceholder;
+    public GameObject windowPlaceholder;
+    public GameObject doorPlaceholder;
+    
     
     
     [Header("Prefabs")]
@@ -33,11 +47,17 @@ public class PlayerCounter : MonoBehaviour
 
     private void Start()
     {
-        counter[brick] = 0;
-        counter[door] = 0;
+        
 
-        TMPHolder[brick] = brickTMP;
-        TMPHolder[door] = doorTMP;
+        TMPHolder[Collectable.CollectableType.Door] = doorTMP;
+        TMPHolder[Collectable.CollectableType.Roof] = roofTMP;
+        TMPHolder[Collectable.CollectableType.Wall] = wallTMP;
+        TMPHolder[Collectable.CollectableType.Window] = windowTMP;
+        
+        placeHolder[Collectable.CollectableType.Door] = doorPlaceholder;
+        placeHolder[Collectable.CollectableType.Roof] = roofPlaceholder;
+        placeHolder[Collectable.CollectableType.Wall] = wallPlaceholder;
+        placeHolder[Collectable.CollectableType.Window] = windowPlaceholder;
 
         currentMoney = playerStatsSO.GetStartingMoney();
         playerMoneyTMP.text = currentMoney + "$";
@@ -48,7 +68,7 @@ public class PlayerCounter : MonoBehaviour
     private void Update()
     {
     }
-
+/*
     public void Counter(GameObject key)
     {
         GameObject corObject;
@@ -81,20 +101,29 @@ public class PlayerCounter : MonoBehaviour
         corParent.GetComponent<UIEffects>().PickUp();
 
 
+    }*/
+
+    void PickUp(GameObject item)
+    {
+        playerInventory[item.GetComponent<Collectable>().type] = item;
+        
+
     }
+    
     
     private void OnCollisionEnter(Collision collision)
     {
-        
-        if (collision.gameObject.CompareTag("Collectable"))
+        GameObject collisionParent = collision.gameObject.transform.parent.gameObject;
+        Debug.Log("zaa");
+        if (collisionParent.CompareTag("Collectable"))
         {
             //brickHolder.GetComponent<BrickHolder>().addJoint(collision.gameObject);
 
-            GameObject collisionParent = collision.gameObject.transform.parent.gameObject;
+            
 
-            if (currentMoney >= collision.gameObject.GetComponent<Collectable>().price)
+            if (currentMoney >= collisionParent.GetComponent<Collectable>().price)
             {
-                Counter(collision.gameObject);
+                //Counter(collision.gameObject);
             
                 Destroy(collisionParent.gameObject);
             }

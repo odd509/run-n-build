@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     
     private void Awake()
     {
-        _upgradeCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel) * startingMoneyUpgradeBaseCost);
+        _upgradeCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel - 1) * startingMoneyUpgradeBaseCost);
         startingMoneyUpgradeText.text = "Cost: " + _upgradeCost + "$<br>Level: " + playerStatsSO.startingMoneyLevel;
 
         totalMoneyText.text = playerStatsSO.totalMoney + "$";
@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
             playerStatsSO.totalMoney -= _upgradeCost;
             playerStatsSO.startingMoneyLevel++;
             
-            _upgradeCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel) * startingMoneyUpgradeBaseCost);
+            _upgradeCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel - 1) * startingMoneyUpgradeBaseCost);
             startingMoneyUpgradeText.text = "Cost: " + _upgradeCost + "$<br>Level: " + playerStatsSO.startingMoneyLevel;
             
             totalMoneyText.text = playerStatsSO.totalMoney + "$";
