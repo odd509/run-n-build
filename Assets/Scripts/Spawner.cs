@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {

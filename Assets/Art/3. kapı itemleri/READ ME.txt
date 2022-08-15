@@ -1,0 +1,12 @@
+Oyun içerisine eklenebilecek 4 çeşit kapı bulunuyor. Tıpkı 
+duvarlarda olduğu gibi rastgele çıkmaları işi eğlenceli
+kılabilir. Fİyat durumuna göre ucuzdan pahalıya bu kapıların
+sıralaması:
+1- Düz kapı
+2- Düz ve pencereli kapı
+3- yuvarlak hatlı kapı
+4- yuvarlak hatlı ve pencereli kapı
+
+Ve tıpkı duvarlarda olduğu gibi 4 kapınında üçer tane renk
+seçeneği bulunuyor. Bence tüm bu seçenekler rastgele oyuncuya
+sunulursa çok hoş olur.

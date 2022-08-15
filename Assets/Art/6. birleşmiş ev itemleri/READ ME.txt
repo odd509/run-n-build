@@ -1,0 +1,6 @@
+Bu klasördeki itemler oyunun sonunda olmasını planladığımız
+evin birleşme animasyonunda kullanabileceğin yeniden
+ölçeklendirilmiş çatı ve ev itemleridir. Yerleşmesi gereken,
+kapı ve pencere itemleri diğer dosyalardan alınabilir. Boyut
+olarak unity içinde de açıp baktım uyumlu olsun diye.
+Buradaki duvarlar 4 duvar şeklinde.

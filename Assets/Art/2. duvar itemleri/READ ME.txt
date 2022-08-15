@@ -1,0 +1,16 @@
+Bu klasördeki duvarlar aslen 2 farklı tipe sahip. Oyun
+içersinde biri pahalı biri ucuz olacak iki tip. Tuğla ve 
+beton duvar. Hangisin pahalı olduğuna sen karar verirsin. 
+Ama onun dışında her iki duvar tipinde de 3 farklı basit
+renk seçeneği bulunuyor. Eğer yapabilirsen karışık bir şekilde
+oyuncunun karşısına çıkmaları değişik ev temaları yapmalarına
+ve oyunu daha ilginç kılmaya neden olabiir. Aslında oyun içinde
+6 farklı duvar olacak yani.
+Burada 12 tanesinin bulunma nedeni ise oyuncunun toplayacağı
+itemlerin bu noktada nasıl duracağına karar verememiş olmam.
+Bu yüzden bu konuda da iki seçeneğimiz var. Biri perspektif
+olmadan düz bir blok gibi duran duvar, diğeri ise
+perspektifinde devreye girdiği iki bitişik ve bir platformdan
+oluşan duvar. Bu noktada oyun sırasındaki görselliği düşünmek
+gerek. Şahsen perspektifliden yanayım. Ama sen hangisini
+istersen onu seçebiliriz.
