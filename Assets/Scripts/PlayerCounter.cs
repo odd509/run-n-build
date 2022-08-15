@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerCounter : MonoBehaviour
@@ -106,7 +107,30 @@ public class PlayerCounter : MonoBehaviour
     void PickUp(GameObject item)
     {
         playerInventory[item.GetComponent<Collectable>().type] = item;
+        TMPHolder[item.GetComponent<Collectable>().type].text = item.GetComponent<Collectable>().price + "$";
         
+        var placeHolderGO = placeHolder[item.GetComponent<Collectable>().type];
+        
+        
+        //clear previous ones
+        foreach (Transform child in placeHolderGO.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        
+        Debug.Log(item);
+        item.transform.position = placeHolderGO.transform.position;
+        item.transform.rotation = placeHolderGO.transform.rotation;
+        item.transform.parent = placeHolderGO.transform;
+        item.transform.Find("Price Canvas").gameObject.SetActive(false);
+        item.GetComponent<Collectable>().enabled = false;
+        item.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("UI");
+        item.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
+        
+        Debug.Log(item + " " + item.layer);
+        item.transform.localScale *= 0.2f;
+        
+        placeHolderGO.GetComponent<Animator>().SetTrigger("Scale");
 
     }
     
@@ -114,7 +138,6 @@ public class PlayerCounter : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject collisionParent = collision.gameObject.transform.parent.gameObject;
-        Debug.Log("zaa");
         if (collisionParent.CompareTag("Collectable"))
         {
             //brickHolder.GetComponent<BrickHolder>().addJoint(collision.gameObject);
@@ -124,8 +147,7 @@ public class PlayerCounter : MonoBehaviour
             if (currentMoney >= collisionParent.GetComponent<Collectable>().price)
             {
                 //Counter(collision.gameObject);
-            
-                Destroy(collisionParent.gameObject);
+                PickUp(collisionParent);
             }
             
             

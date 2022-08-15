@@ -73,10 +73,9 @@ public class MaterialSpawner : MonoBehaviour
 
     private void Spawn(Collectable.CollectableType collectableType)
     { 
-        Debug.Log("material zort1");
 
         _collectableObject = Instantiate(collectablePrefab, currentPos, collectablePrefab.transform.rotation);
-
+        _collectableObject.GetComponent<Collectable>().type = collectableType;
         
         GameObject[] selectedList = itemListDict[collectableType];
         GameObject selectedItem = selectedList[Random.Range(0, selectedList.Length)];

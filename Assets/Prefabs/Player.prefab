@@ -392,9 +392,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatsSO: {fileID: 11400000, guid: aac95290b88b92749a16a264b0cd3bb8, type: 2}
-  brickTMP: {fileID: 0}
+  roofTMP: {fileID: 0}
+  wallTMP: {fileID: 0}
+  windowTMP: {fileID: 0}
   doorTMP: {fileID: 0}
   playerMoneyTMP: {fileID: 3792200864147036745}
+  roofPlaceholder: {fileID: 0}
+  wallPlaceholder: {fileID: 0}
+  windowPlaceholder: {fileID: 0}
+  doorPlaceholder: {fileID: 0}
   brick: {fileID: 3722860988580245312, guid: a21d29b05ca3c20409c13faa63b2b50c, type: 3}
   door: {fileID: 6775159272583141199, guid: a0cafaedf1df60643819991308a423df, type: 3}
   brickParent: {fileID: 0}
