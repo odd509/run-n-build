@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -106,6 +107,8 @@ public class PlayerCounter : MonoBehaviour
 
     void PickUp(GameObject item)
     {
+        currentMoney -= item.GetComponent<Collectable>().price;
+        
         playerInventory[item.GetComponent<Collectable>().type] = item;
         TMPHolder[item.GetComponent<Collectable>().type].text = item.GetComponent<Collectable>().price + "$";
         
@@ -132,6 +135,12 @@ public class PlayerCounter : MonoBehaviour
         
         placeHolderGO.GetComponent<Animator>().SetTrigger("Scale");
 
+        
+        if (item.GetComponent<Collectable>().pairItem != null)
+        {
+            Destroy(item.GetComponent<Collectable>().pairItem);
+        }
+
     }
     
     
@@ -148,6 +157,13 @@ public class PlayerCounter : MonoBehaviour
             {
                 //Counter(collision.gameObject);
                 PickUp(collisionParent);
+            }
+            else
+            {
+                playerStatsSO.playerInventory = playerInventory;
+                
+                //house animation
+                
             }
             
             

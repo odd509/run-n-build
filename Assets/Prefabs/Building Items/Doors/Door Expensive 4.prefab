@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5267116409744974245
+--- !u!1 &6032463255450156518
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4779267926337960735}
-  - component: {fileID: 8501816767658964154}
-  - component: {fileID: 5915603488562561136}
-  - component: {fileID: 6283908841311039761}
-  - component: {fileID: 1976541317629416948}
+  - component: {fileID: 6412085671498065756}
+  - component: {fileID: 8021920731628349689}
+  - component: {fileID: 5239763544401796147}
+  - component: {fileID: 6008872537870111620}
+  - component: {fileID: -3918628597401502311}
   m_Layer: 0
-  m_Name: Door Exp 6
+  m_Name: Door Expensive 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4779267926337960735
+--- !u!4 &6412085671498065756
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267116409744974245}
+  m_GameObject: {fileID: 6032463255450156518}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
@@ -34,21 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!33 &8501816767658964154
+--- !u!33 &8021920731628349689
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267116409744974245}
-  m_Mesh: {fileID: 8906563331131944060, guid: 88e9a76a1e26c8e4586bcfdcced6b458, type: 3}
---- !u!23 &5915603488562561136
+  m_GameObject: {fileID: 6032463255450156518}
+  m_Mesh: {fileID: 8906563331131944060, guid: 689a81f2cca5d914f823cc83007f6067, type: 3}
+--- !u!23 &5239763544401796147
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267116409744974245}
+  m_GameObject: {fileID: 6032463255450156518}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,10 +61,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8368722655750445499, guid: 88e9a76a1e26c8e4586bcfdcced6b458, type: 3}
-  - {fileID: -8255497921437555292, guid: 88e9a76a1e26c8e4586bcfdcced6b458, type: 3}
-  - {fileID: 5561349426305759274, guid: 88e9a76a1e26c8e4586bcfdcced6b458, type: 3}
-  - {fileID: 8748892135801146194, guid: 88e9a76a1e26c8e4586bcfdcced6b458, type: 3}
+  - {fileID: 8368722655750445499, guid: 689a81f2cca5d914f823cc83007f6067, type: 3}
+  - {fileID: -8255497921437555292, guid: 689a81f2cca5d914f823cc83007f6067, type: 3}
+  - {fileID: 5775865398287329665, guid: 689a81f2cca5d914f823cc83007f6067, type: 3}
+  - {fileID: -4612162990109294230, guid: 689a81f2cca5d914f823cc83007f6067, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,27 +86,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6283908841311039761
+--- !u!64 &6008872537870111620
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267116409744974245}
+  m_GameObject: {fileID: 6032463255450156518}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 8906563331131944060, guid: 88e9a76a1e26c8e4586bcfdcced6b458, type: 3}
---- !u!54 &1976541317629416948
+  m_Mesh: {fileID: 8906563331131944060, guid: 689a81f2cca5d914f823cc83007f6067, type: 3}
+--- !u!54 &-3918628597401502311
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267116409744974245}
+  m_GameObject: {fileID: 6032463255450156518}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0

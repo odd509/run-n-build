@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,17 +13,32 @@ public class MainMenu : MonoBehaviour
     [Header("Starting Money")]
     public float startingMoneyUpgradeBaseCost;
     public TextMeshProUGUI startingMoneyUpgradeText;
-    private float _upgradeCost;
+    private float _upgradeStartingMoneyCost;
 
+    [Header("Bargain")]
+    public float bargainUpgradeBaseCost;
+    public TextMeshProUGUI bargainUpgradeText;
+    private float _upgradeBargainCost;
+    
     [Header("Total Money")] public TextMeshProUGUI totalMoneyText;
     
     
     private void Awake()
     {
-        _upgradeCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel - 1) * startingMoneyUpgradeBaseCost);
-        startingMoneyUpgradeText.text = "Cost: " + _upgradeCost + "$<br>Level: " + playerStatsSO.startingMoneyLevel;
+        _upgradeStartingMoneyCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel - 1) * startingMoneyUpgradeBaseCost);
+        startingMoneyUpgradeText.text = "Cost: " + _upgradeStartingMoneyCost + "$<br>Level: " + playerStatsSO.startingMoneyLevel;
 
-        totalMoneyText.text = playerStatsSO.totalMoney + "$";
+        _upgradeBargainCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.betterBargainLevel - 1) * bargainUpgradeBaseCost);
+        bargainUpgradeText.text = "Cost: " + _upgradeBargainCost + "$<br>Level: " + playerStatsSO.betterBargainLevel;
+
+        
+    }
+
+    private static float t = 0.0f;
+    private void Update()
+    {
+        totalMoneyText.text = Mathf.Round(Mathf.Lerp(0, playerStatsSO.totalMoney, t)) + "$";
+        t += 0.4f * Time.deltaTime;
     }
 
     public void PlayGame()
@@ -37,13 +53,13 @@ public class MainMenu : MonoBehaviour
 
     public void UpgradeStartingMoney()
     {
-        if (playerStatsSO.totalMoney >= _upgradeCost)
+        if (playerStatsSO.totalMoney >= _upgradeStartingMoneyCost)
         {
-            playerStatsSO.totalMoney -= _upgradeCost;
+            playerStatsSO.totalMoney -= _upgradeStartingMoneyCost;
             playerStatsSO.startingMoneyLevel++;
             
-            _upgradeCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel - 1) * startingMoneyUpgradeBaseCost);
-            startingMoneyUpgradeText.text = "Cost: " + _upgradeCost + "$<br>Level: " + playerStatsSO.startingMoneyLevel;
+            _upgradeStartingMoneyCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.startingMoneyLevel - 1) * startingMoneyUpgradeBaseCost);
+            startingMoneyUpgradeText.text = "Cost: " + _upgradeStartingMoneyCost + "$<br>Level: " + playerStatsSO.startingMoneyLevel;
             
             totalMoneyText.text = playerStatsSO.totalMoney + "$";
         }

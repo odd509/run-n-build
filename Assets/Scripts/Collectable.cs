@@ -15,7 +15,8 @@ public class Collectable : MonoBehaviour
     private float _flipper = 1;
     public float flipTimer;
     private float flipCountdown;
-    
+
+    public GameObject pairItem;
 
     public CollectableType type;
     public enum CollectableType

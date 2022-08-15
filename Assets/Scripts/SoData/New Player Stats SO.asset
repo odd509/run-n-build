@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMoneyLevel: 1
   betterBargainLevel: 1
-  totalMoney: 0
+  totalMoney: 100
   resetStartingMoneyLevel: 1
   resetBetterBargainLevel: 1
-  resetTotalMoney: 0
+  resetTotalMoney: 100

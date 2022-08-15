@@ -24,6 +24,8 @@ public class MaterialSpawner : MonoBehaviour
     public int spawnCount;
     public float spawnTimer;
     private Vector3 currentPos;
+
+    public PlayerStatsSO PlayerStatsSo;
     
     private void Awake()
     {
@@ -37,7 +39,8 @@ public class MaterialSpawner : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             currentPos += Vector3.forward * spawnDistance;
-            Spawn(RandomiseType());
+            
+            SpawnPair();
         }
 
     }
@@ -52,7 +55,7 @@ public class MaterialSpawner : MonoBehaviour
         yield return new WaitForSeconds(spawnTimer);
         currentPos += Vector3.forward * spawnDistance;
         
-        Spawn(RandomiseType());
+        SpawnPair();
         StartCoroutine(Spawner());
 
     }
@@ -71,19 +74,36 @@ public class MaterialSpawner : MonoBehaviour
         };
     }
 
-    private void Spawn(Collectable.CollectableType collectableType)
+    private GameObject Spawn(Collectable.CollectableType collectableType, Vector3 spawnPos)
     { 
 
-        _collectableObject = Instantiate(collectablePrefab, currentPos, collectablePrefab.transform.rotation);
+        _collectableObject = Instantiate(collectablePrefab, spawnPos, collectablePrefab.transform.rotation);
         _collectableObject.GetComponent<Collectable>().type = collectableType;
         
         GameObject[] selectedList = itemListDict[collectableType];
         GameObject selectedItem = selectedList[Random.Range(0, selectedList.Length)];
-        GameObject selectedItemInstance = Instantiate(selectedItem, currentPos, selectedItem.transform.rotation);
+        GameObject selectedItemInstance = Instantiate(selectedItem, spawnPos, selectedItem.transform.rotation);
         
         selectedItemInstance.transform.parent = _collectableObject.transform;
-        
 
+        float priceBase1 = selectedItemInstance.name.Contains("Expensive") ? 1 : 4;
+        float priceBase2 = selectedItemInstance.name[selectedItemInstance.name.Length - 1] > 3 ? 1 : 2;
+
+        
+        
+        _collectableObject.GetComponent<Collectable>().price = (float) (Math.Pow(PlayerStatsSo.betterBargainLevel, 1.2f) * Random.Range(1, 4) * priceBase1 * priceBase2); 
+        
+        return _collectableObject;
+
+    }
+
+    private void SpawnPair()
+    {
+        var first = Spawn(RandomiseType(), currentPos + Vector3.left * spawnOffset); //left spawn
+        var second = Spawn(RandomiseType(), currentPos + Vector3.right * spawnOffset); //right spawn
+
+        first.GetComponent<Collectable>().pairItem = second;
+        second.GetComponent<Collectable>().pairItem = first;
     }
     
 
