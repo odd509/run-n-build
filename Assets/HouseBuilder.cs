@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class HouseBuilder : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class HouseBuilder : MonoBehaviour
 
             item.transform.position = holder.transform.position;
             item.transform.parent = holder.transform;
+
+            item.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.On;
             
             Debug.Log(pair.Value.transform.localScale);
             pair.Value.transform.localScale = Vector3.one;

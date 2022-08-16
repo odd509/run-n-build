@@ -25,6 +25,7 @@ public class SoldFor : MonoBehaviour
         }
 
         _soldPrice = Mathf.Pow(1.1f * playerStatsSo.betterBargainLevel, itemCount) * totalItemPrice;
+        playerStatsSo.totalMoney += _soldPrice;
 
     }
 
