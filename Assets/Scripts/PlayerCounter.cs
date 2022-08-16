@@ -204,7 +204,7 @@ public class PlayerCounter : MonoBehaviour
         {
             if (pair.Value != null)
             {
-                Debug.Log(pair.Value.transform.GetChild(1).gameObject);
+                
                 pair.Value.transform.parent = null;
                 DontDestroyOnLoad(pair.Value);
             }

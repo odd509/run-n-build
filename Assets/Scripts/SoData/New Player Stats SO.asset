@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcb6807a293a7b4b901f3992945aebd, type: 3}
   m_Name: New Player Stats SO
   m_EditorClassIdentifier: 
-  startingMoneyLevel: 1
+  startingMoneyLevel: 5
   betterBargainLevel: 1
-  totalMoney: 100
-  resetStartingMoneyLevel: 1
+  totalMoney: 0
+  resetStartingMoneyLevel: 5
   resetBetterBargainLevel: 1
-  resetTotalMoney: 100
+  resetTotalMoney: 0

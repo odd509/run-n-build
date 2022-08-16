@@ -33,12 +33,21 @@ public class HouseBuilder : MonoBehaviour
     {
         foreach (var pair in playerStatsSO.playerInventory)
         {
-            Debug.Log(pair);
             GameObject holder = placeHolder[pair.Key];
             GameObject item = pair.Value;
 
             item.transform.position = holder.transform.position;
             item.transform.parent = holder.transform;
+            
+            Debug.Log(pair.Value.transform.localScale);
+            pair.Value.transform.localScale = Vector3.one;
+            Debug.Log(pair.Value.transform.localScale);
+            pair.Value.transform.localEulerAngles = Vector3.zero;
+            
+            pair.Value.transform.GetChild(1).localEulerAngles = Vector3.zero;
+            
+            Debug.Log(pair.Value.transform.localScale);
+            
         }
     }
 }
