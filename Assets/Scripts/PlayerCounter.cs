@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerCounter : MonoBehaviour
@@ -61,9 +62,7 @@ public class PlayerCounter : MonoBehaviour
         placeHolder[Collectable.CollectableType.Wall] = wallPlaceholder;
         placeHolder[Collectable.CollectableType.Window] = windowPlaceholder;
 
-        currentMoney = playerStatsSO.GetStartingMoney();
-        playerMoneyTMP.text = currentMoney + "$";
-
+        UpdatePlayerMoney(playerStatsSO.GetStartingMoney());
 
     }
 
@@ -105,9 +104,16 @@ public class PlayerCounter : MonoBehaviour
 
     }*/
 
+    private void UpdatePlayerMoney(float newMoney)
+    {
+        currentMoney = newMoney;
+        playerMoneyTMP.text = currentMoney + "$";
+    }
+
+
     void PickUp(GameObject item)
     {
-        currentMoney -= item.GetComponent<Collectable>().price;
+        UpdatePlayerMoney(currentMoney - item.GetComponent<Collectable>().price);
         
         playerInventory[item.GetComponent<Collectable>().type] = item;
         TMPHolder[item.GetComponent<Collectable>().type].text = item.GetComponent<Collectable>().price + "$";
@@ -161,9 +167,9 @@ public class PlayerCounter : MonoBehaviour
             else
             {
                 playerStatsSO.playerInventory = playerInventory;
-                
+                SceneManager.LoadScene(0);
                 //house animation
-                
+
             }
             
             

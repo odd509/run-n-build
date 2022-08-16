@@ -86,8 +86,8 @@ public class MaterialSpawner : MonoBehaviour
         
         selectedItemInstance.transform.parent = _collectableObject.transform;
 
-        float priceBase1 = selectedItemInstance.name.Contains("Expensive") ? 1 : 4;
-        float priceBase2 = selectedItemInstance.name[selectedItemInstance.name.Length - 1] > 3 ? 1 : 2;
+        float priceBase1 = selectedItemInstance.name.Contains("Expensive") ? 4 : 1;
+        float priceBase2 = selectedItemInstance.name[selectedItemInstance.name.Length - 1] > 3 ? 2 : 1;
 
         
         

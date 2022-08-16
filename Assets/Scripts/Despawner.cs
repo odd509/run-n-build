@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Despawner : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject);
         Destroy(collision.gameObject.transform.parent.gameObject);
     }
 }

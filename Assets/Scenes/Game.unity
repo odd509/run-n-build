@@ -2289,10 +2289,6 @@ PrefabInstance:
       propertyPath: windowPlaceholder
       value: 
       objectReference: {fileID: 1138653214}
-    - target: {fileID: 3792200865749459827, guid: a8dbaa11b99a7d340902b57e389c3b2e, type: 3}
-      propertyPath: runBorder
-      value: 3.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8dbaa11b99a7d340902b57e389c3b2e, type: 3}
 --- !u!1001 &8081380200791451032

@@ -378,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 5
   sideSpeed: 3
-  runBorder: 5
+  runBorder: 3.5
 --- !u!114 &3792200865749459826
 MonoBehaviour:
   m_ObjectHideFlags: 0
