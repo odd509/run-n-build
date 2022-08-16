@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class Despawner : MonoBehaviour
 {
+    public GameObject materialSpawner;
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject);
+        if (collision.gameObject.transform.parent.GetComponent<Collectable>().pairItem == null)
+        {
+            materialSpawner.GetComponent<MaterialSpawner>().SpawnPair();
+        }
+        
         Destroy(collision.gameObject.transform.parent.gameObject);
     }
 }

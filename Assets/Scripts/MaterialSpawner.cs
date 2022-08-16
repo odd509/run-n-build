@@ -13,6 +13,8 @@ public class MaterialSpawner : MonoBehaviour
     public GameObject[] windows;
     public GameObject[] walls;
 
+    public GameObject cash;
+    
     public GameObject collectablePrefab;
     private GameObject _collectableObject;
 
@@ -38,7 +40,7 @@ public class MaterialSpawner : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            currentPos += Vector3.forward * spawnDistance;
+            
             
             SpawnPair();
         }
@@ -47,7 +49,7 @@ public class MaterialSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Spawner());
+        //StartCoroutine(Spawner());
     }
 
     IEnumerator Spawner()
@@ -79,9 +81,25 @@ public class MaterialSpawner : MonoBehaviour
 
         _collectableObject = Instantiate(collectablePrefab, spawnPos, collectablePrefab.transform.rotation);
         _collectableObject.GetComponent<Collectable>().type = collectableType;
+
+        
+        
+        
         
         GameObject[] selectedList = itemListDict[collectableType];
         GameObject selectedItem = selectedList[Random.Range(0, selectedList.Length)];
+        
+        int selector = Random.Range(0, 11);
+
+        if (selector == 0)
+        {
+            selectedItem = cash;
+            _collectableObject.GetComponent<Collectable>().type = Collectable.CollectableType.Cash;
+        }
+        
+        
+        
+        
         GameObject selectedItemInstance = Instantiate(selectedItem, spawnPos, selectedItem.transform.rotation);
         
         selectedItemInstance.transform.parent = _collectableObject.transform;
@@ -97,8 +115,9 @@ public class MaterialSpawner : MonoBehaviour
 
     }
 
-    private void SpawnPair()
+    public void SpawnPair()
     {
+        currentPos += Vector3.forward * spawnDistance;
         var first = Spawn(RandomiseType(), currentPos + Vector3.left * spawnOffset); //left spawn
         var second = Spawn(RandomiseType(), currentPos + Vector3.right * spawnOffset); //right spawn
 

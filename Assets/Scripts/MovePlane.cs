@@ -6,16 +6,13 @@ public class MovePlane : MonoBehaviour
 {
     private float runSpeed;
 
-    public PlayerMovement playerMovementScript;
+    public GameObject player;
     // Start is called before the first frame update
-    void Awake()
-    {
-        runSpeed = playerMovementScript.runSpeed;
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0,runSpeed * Time.deltaTime);
+        transform.position = new Vector3(0, 0, player.transform.position.z + 160);
     }
 }

@@ -24,7 +24,8 @@ public class Collectable : MonoBehaviour
         Door,
         Wall,
         Roof,
-        Window
+        Window,
+        Cash
     }
 
     private void Awake()

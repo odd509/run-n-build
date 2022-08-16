@@ -45,7 +45,7 @@ public class PlayerCounter : MonoBehaviour
     [Header("UI Effects")]
     public GameObject brickParent;
     public GameObject doorParent;
-    
+
     
 
     private void Start()
@@ -116,6 +116,7 @@ public class PlayerCounter : MonoBehaviour
         UpdatePlayerMoney(currentMoney - item.GetComponent<Collectable>().price);
         
         playerInventory[item.GetComponent<Collectable>().type] = item;
+        Debug.Log(playerInventory);
         TMPHolder[item.GetComponent<Collectable>().type].text = item.GetComponent<Collectable>().price + "$";
         
         var placeHolderGO = placeHolder[item.GetComponent<Collectable>().type];
@@ -127,7 +128,6 @@ public class PlayerCounter : MonoBehaviour
             Destroy(child.gameObject);
         }
         
-        Debug.Log(item);
         item.transform.position = placeHolderGO.transform.position;
         item.transform.rotation = placeHolderGO.transform.rotation;
         item.transform.parent = placeHolderGO.transform;
@@ -156,18 +156,34 @@ public class PlayerCounter : MonoBehaviour
         if (collisionParent.CompareTag("Collectable"))
         {
             //brickHolder.GetComponent<BrickHolder>().addJoint(collision.gameObject);
-
+            if (collisionParent.GetComponent<Collectable>().type == Collectable.CollectableType.Cash)
+            {
+                currentMoney += collisionParent.GetComponent<Collectable>().price;
+                playerMoneyTMP.text = currentMoney + "$";
+                if (collisionParent.GetComponent<Collectable>().pairItem != null)
+                {
+                    Destroy(collisionParent.GetComponent<Collectable>().pairItem);
+                }
+                Destroy(collisionParent);
+                return;
+                
+            }
             
 
             if (currentMoney >= collisionParent.GetComponent<Collectable>().price)
             {
                 //Counter(collision.gameObject);
                 PickUp(collisionParent);
+                if (currentMoney == 0)
+                {
+                    playerStatsSO.playerInventory = playerInventory;
+                    SceneManager.LoadScene(2); 
+                }
             }
             else
             {
                 playerStatsSO.playerInventory = playerInventory;
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(2);
                 //house animation
 
             }
