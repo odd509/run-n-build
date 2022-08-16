@@ -23,7 +23,6 @@ public class Timeline : MonoBehaviour
         //dance
 
         yield return new WaitForSeconds(3);
-        Debug.Log("zort");
         player.GetComponent<Animator>().SetTrigger("Dance");
 
     }

@@ -46,7 +46,7 @@ public class PlayerCounter : MonoBehaviour
     public GameObject brickParent;
     public GameObject doorParent;
 
-    
+    public GameObject materialSpawner;
 
     private void Start()
     {
@@ -116,7 +116,7 @@ public class PlayerCounter : MonoBehaviour
         UpdatePlayerMoney(currentMoney - item.GetComponent<Collectable>().price);
         
         playerInventory[item.GetComponent<Collectable>().type] = item;
-        Debug.Log(playerInventory);
+
         TMPHolder[item.GetComponent<Collectable>().type].text = item.GetComponent<Collectable>().price + "$";
         
         var placeHolderGO = placeHolder[item.GetComponent<Collectable>().type];
@@ -136,11 +136,10 @@ public class PlayerCounter : MonoBehaviour
         item.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("UI");
         item.transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
         
-        Debug.Log(item + " " + item.layer);
         item.transform.localScale *= 0.2f;
         
         placeHolderGO.GetComponent<Animator>().SetTrigger("Scale");
-
+        
         
         if (item.GetComponent<Collectable>().pairItem != null)
         {
@@ -155,6 +154,7 @@ public class PlayerCounter : MonoBehaviour
         GameObject collisionParent = collision.gameObject.transform.parent.gameObject;
         if (collisionParent.CompareTag("Collectable"))
         {
+            materialSpawner.GetComponent<MaterialSpawner>().SpawnPair();
             //brickHolder.GetComponent<BrickHolder>().addJoint(collision.gameObject);
             if (collisionParent.GetComponent<Collectable>().type == Collectable.CollectableType.Cash)
             {
@@ -165,24 +165,27 @@ public class PlayerCounter : MonoBehaviour
                     Destroy(collisionParent.GetComponent<Collectable>().pairItem);
                 }
                 Destroy(collisionParent);
-                return;
+                
                 
             }
             
 
-            if (currentMoney >= collisionParent.GetComponent<Collectable>().price)
+            else if (currentMoney >= collisionParent.GetComponent<Collectable>().price)
             {
                 //Counter(collision.gameObject);
                 PickUp(collisionParent);
                 if (currentMoney == 0)
                 {
                     playerStatsSO.playerInventory = playerInventory;
+                    //DontDestroyInventory();
+
                     SceneManager.LoadScene(2); 
                 }
             }
             else
             {
                 playerStatsSO.playerInventory = playerInventory;
+                //DontDestroyInventory();
                 SceneManager.LoadScene(2);
                 //house animation
 
@@ -194,4 +197,18 @@ public class PlayerCounter : MonoBehaviour
             //collision.gameObject.tag = "Collected";
         }
     }
+
+    private void DontDestroyInventory()
+    {
+        foreach (var pair in playerStatsSO.playerInventory)
+        {
+            if (pair.Value != null)
+            {
+                Debug.Log(pair.Value);
+                DontDestroyOnLoad(pair.Value);
+            }
+            
+        }
+    }
+    
 }

@@ -89,7 +89,7 @@ public class MaterialSpawner : MonoBehaviour
         GameObject[] selectedList = itemListDict[collectableType];
         GameObject selectedItem = selectedList[Random.Range(0, selectedList.Length)];
         
-        int selector = Random.Range(0, 11);
+        int selector = Random.Range(0, 6);
 
         if (selector == 0)
         {
