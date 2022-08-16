@@ -177,7 +177,7 @@ public class PlayerCounter : MonoBehaviour
                 if (currentMoney == 0)
                 {
                     playerStatsSO.playerInventory = playerInventory;
-                    //DontDestroyInventory();
+                    DontDestroyInventory();
 
                     SceneManager.LoadScene(2); 
                 }
@@ -185,7 +185,7 @@ public class PlayerCounter : MonoBehaviour
             else
             {
                 playerStatsSO.playerInventory = playerInventory;
-                //DontDestroyInventory();
+                DontDestroyInventory();
                 SceneManager.LoadScene(2);
                 //house animation
 
@@ -204,7 +204,8 @@ public class PlayerCounter : MonoBehaviour
         {
             if (pair.Value != null)
             {
-                Debug.Log(pair.Value);
+                Debug.Log(pair.Value.transform.GetChild(1).gameObject);
+                pair.Value.transform.parent = null;
                 DontDestroyOnLoad(pair.Value);
             }
             
