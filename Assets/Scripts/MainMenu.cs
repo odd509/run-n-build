@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public PlayerStatsSO playerStatsSO;
+    public GameObject player;
 
     [Header("Starting Money")]
     public float startingMoneyUpgradeBaseCost;
@@ -51,6 +52,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    
+
     public void UpgradeStartingMoney()
     {
         if (playerStatsSO.totalMoney >= _upgradeStartingMoneyCost)
@@ -64,5 +67,19 @@ public class MainMenu : MonoBehaviour
             totalMoneyText.text = playerStatsSO.totalMoney + "$";
         }
     }
+    
+    public void UpgradeBargain()
+        {
+            if (playerStatsSO.totalMoney >= _upgradeBargainCost)
+            {
+                playerStatsSO.totalMoney -= _upgradeBargainCost;
+                playerStatsSO.betterBargainLevel++;
+                
+                _upgradeBargainCost = Mathf.Round(Mathf.Pow(1.2f, playerStatsSO.betterBargainLevel - 1) * bargainUpgradeBaseCost);
+                bargainUpgradeText.text = "Cost: " + _upgradeBargainCost + "$<br>Level: " + playerStatsSO.betterBargainLevel;
+                
+                totalMoneyText.text = playerStatsSO.totalMoney + "$";
+            }
+        }
 
 }

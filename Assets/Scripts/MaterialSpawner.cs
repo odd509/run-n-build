@@ -14,7 +14,7 @@ public class MaterialSpawner : MonoBehaviour
     public GameObject[] walls;
 
     public GameObject cash;
-    
+
     public GameObject collectablePrefab;
     private GameObject _collectableObject;
 

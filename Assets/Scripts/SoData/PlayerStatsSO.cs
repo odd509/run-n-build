@@ -11,7 +11,7 @@ public class PlayerStatsSO : ScriptableObject
     public int betterBargainLevel;
     public float totalMoney;
 
-    [Header("Stat Resets")]
+    [Header("Stat Resets")] public bool allowReset;
     [SerializeField] private int resetStartingMoneyLevel;
     [SerializeField] private int resetBetterBargainLevel;
     [SerializeField] private float resetTotalMoney;
@@ -20,9 +20,13 @@ public class PlayerStatsSO : ScriptableObject
 
     private void OnEnable()
     {
-        startingMoneyLevel = resetStartingMoneyLevel;
-        betterBargainLevel = resetBetterBargainLevel;
-        totalMoney = resetTotalMoney;
+        if (allowReset)
+        {
+            startingMoneyLevel = resetStartingMoneyLevel;
+            betterBargainLevel = resetBetterBargainLevel;
+            totalMoney = resetTotalMoney;
+        }
+        
     }
 
 

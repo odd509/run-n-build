@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28101757, g: 0.58694905, b: 0.8197123, a: 1}
+  m_IndirectSpecularColor: {r: 0.5666673, g: 0.78995955, b: 0.9161315, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerStatsSo: {fileID: 11400000, guid: aac95290b88b92749a16a264b0cd3bb8, type: 2}
+  player: {fileID: 690855199}
 --- !u!4 &190122373
 Transform:
   m_ObjectHideFlags: 0
@@ -2171,6 +2172,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 190122372}
+    - target: {fileID: 4480978040672780995, guid: 186ca956439ee5147affc04a7c6a77b8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SellHouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480978040673125795, guid: 186ca956439ee5147affc04a7c6a77b8, type: 3}
+      propertyPath: m_text
+      value: Sell House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186ca956439ee5147affc04a7c6a77b8, type: 3}
 --- !u!1001 &8081380200791451032

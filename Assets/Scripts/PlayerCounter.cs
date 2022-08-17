@@ -176,18 +176,12 @@ public class PlayerCounter : MonoBehaviour
                 PickUp(collisionParent);
                 if (currentMoney == 0)
                 {
-                    playerStatsSO.playerInventory = playerInventory;
-                    DontDestroyInventory();
-
-                    SceneManager.LoadScene(2); 
+                    ToSoldForScene();
                 }
             }
             else
             {
-                playerStatsSO.playerInventory = playerInventory;
-                DontDestroyInventory();
-                SceneManager.LoadScene(2);
-                //house animation
+                ToSoldForScene();
 
             }
             
@@ -210,6 +204,13 @@ public class PlayerCounter : MonoBehaviour
             }
             
         }
+    }
+
+    public void ToSoldForScene()
+    {
+        playerStatsSO.playerInventory = playerInventory;
+        DontDestroyInventory();
+        SceneManager.LoadScene(2);
     }
     
 }
